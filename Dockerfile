@@ -4,7 +4,7 @@ MAINTAINER Kevin Pawsey
 
 USER root
 RUN apk update && \
-    apk add python
+    apk add python && \
     apk add squid
 
 COPY squid.conf /etc/squid/squid.conf
