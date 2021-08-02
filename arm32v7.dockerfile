@@ -16,6 +16,7 @@ ENV PROXY_GID 13
 
 USER root
 RUN apk update && \
+    apk add bash && \
     apk add python3 &&\
     apk add squid
 
