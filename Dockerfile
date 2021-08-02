@@ -1,5 +1,5 @@
 ARG ARCH=
-FROM ${ARCH}alpine
+FROM ${ARCH}/alpine
 
 MAINTAINER Kevin Pawsey
 
