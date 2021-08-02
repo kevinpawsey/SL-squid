@@ -20,9 +20,14 @@ RUN apk update && \
     apk add python3 &&\
     apk add squid
 
-COPY squid.conf /etc/squid/squid.conf
+# COPY squid.conf /etc/squid/squid.conf
 COPY start-squid.sh /bin/start-squid.sh
 RUN chmod +x /bin/start-squid.sh
+
+RUN groupadd -u 13 proxy
+RUN useradd -d proxy -u 13 proxy
+
+USER proxy
 
 VOLUME /etc/squid
 VOLUME /var/log/squid
