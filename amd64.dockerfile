@@ -2,6 +2,9 @@ FROM amd64/alpine
 
 MAINTAINER Kevin Pawsey
 
+ENV PROXY_UID 13
+ENV PROXY_GID 13
+
 USER root
 RUN apk update && \
     apk add python3 &&\
