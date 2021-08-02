@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 
 NAME=squid
 DESC="Squid HTTP Proxy"
