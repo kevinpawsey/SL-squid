@@ -15,8 +15,6 @@ RUN apk update && \
 COPY start-squid.sh /bin/start-squid.sh
 RUN chmod +x /bin/start-squid.sh
 
-USER proxy
-
 VOLUME /etc/squid
 VOLUME /var/log/squid
 VOLUME /var/spool/squid
