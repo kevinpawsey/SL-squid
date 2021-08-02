@@ -15,9 +15,6 @@ RUN apk update && \
 COPY start-squid.sh /bin/start-squid.sh
 RUN chmod +x /bin/start-squid.sh
 
-RUN addgroup --gid 13 proxy
-RUN adduser --uid 13 proxy proxy
-
 USER proxy
 
 VOLUME /etc/squid
