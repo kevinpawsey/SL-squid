@@ -4,8 +4,8 @@ MAINTAINER Kevin Pawsey
 
 USER root
 RUN apk update && \
-    apk add python
-#    apk add squid
+    apk add python3 &&\
+    apk add squid
 
 COPY squid.conf /etc/squid/squid.conf
 COPY start-squid.sh /bin/start-squid.sh
