@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+  squid:
+    image: my-squid
+#    command: apt-get update && apt-get install -y python
+    environment:
+      - TZ=Europe/London
+      - PROXY_UID=13
+      - PROXY_GID=13
+    ports:
+      - "3128:3128"
+      - "3129:3129"
+    volumes:
+      - type: volume
+        source: config
+        target: /etc/squid
+        volume:
+          nocopy: true
+      - type: volume
+        source: log
+        target: /var/log/squid
+        volume:
+          nocopy: true
+      - type: volume
+        source: cache
+        target: /var/spool/squid
+        volume:
+          nocopy: true
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: 
+          - "node.labels.platform==rock64"
+        preferences:
+          - spread: node.labels.location
+volumes:
+  config:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.1.33,rw,sync,nfsvers=4,soft,nolock
+      device: :/AppData/SQUID/config/
+  log:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.1.33,rw,sync,nfsvers=4,soft,nolock
+      device: :/AppData/SQUID/logs/
+  cache:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.1.33,rw,sync,nfsvers=4,soft,nolock
+      device: :/AppData/SQUID/spool/
