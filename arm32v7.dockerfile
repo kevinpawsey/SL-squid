@@ -24,8 +24,8 @@ RUN apk update && \
 COPY start-squid.sh /bin/start-squid.sh
 RUN chmod +x /bin/start-squid.sh
 
-RUN groupadd -u 13 proxy
-RUN useradd -d proxy -u 13 proxy
+RUN addgroup --gid 13 proxy
+RUN adduser --uid 13 proxy proxy
 
 USER proxy
 
