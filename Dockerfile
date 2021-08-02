@@ -8,6 +8,7 @@ RUN apk update && \
 
 COPY squid.conf /etc/squid/squid.conf
 COPY start-squid.sh /bin/start-squid.sh
+RUN chmod +x /bin/start-squid.sh
 
 EXPOSE 3128
 
