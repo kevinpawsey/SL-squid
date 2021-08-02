@@ -1,5 +1,4 @@
-ARG ARCH=
-FROM ${ARCH}/alpine
+FROM amd64/alpine
 
 MAINTAINER Kevin Pawsey
 
